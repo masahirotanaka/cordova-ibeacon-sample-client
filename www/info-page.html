@@ -1,0 +1,47 @@
+<ons-page ng-controller="InfoPageCtrl">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">{{beacon.name}}</div>
+    </ons-toolbar>
+    
+    <ons-list>
+        <ons-list-item class="list-item-container">
+            <ons-row>
+                <ons-col width="110px">
+                  <img src="{{beacon.icon}}" class="info-page-img">
+                </ons-col>
+                <ons-col>
+                  <p class="info-page-description">{{beacon.description}}</p>  
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+
+        <ons-list-header style="padding: 2px 0 4px 10px;">
+            {{totalComments}} Comments
+        </ons-list-header>
+
+        <ons-list-item ng-repeat="comment in comments" class="list-item-container">
+            <ons-row>
+                <ons-col width="50px">
+                    <img src="{{comment.avatar}}" class="user-img">
+                </ons-col>
+                
+                <ons-col>
+                    <div class="comment-time">{{comment.time}}</div>
+                    <div class="comment-name">{{comment.username}}</div>
+                    <div class="comment-text">{{comment.comment}}</div>
+                </ons-col>                
+            </ons-row>
+        </ons-list-item>
+        
+    </ons-list>
+    
+    <!--Add-Comment-Dialog-->
+    <ons-bottom-toolbar style="text-align: right;">
+        <ons-toolbar-button ng-click="myNavigator.pushPage('add-comment.html', {animation: 'lift'})">
+            <ons-icon icon="ion-compose" fixed-width="false" style="font-size: 24px; vertical-align: -3px;"></ons-icon> Add Comment
+        </ons-toolbar-button>
+    </ons-bottom-toolbar>
+    
+</ons-page>
+
